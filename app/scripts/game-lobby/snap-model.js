@@ -13,6 +13,8 @@
             me.stateChanger = function () {
                 goToHome();
             };
+            me.showCards = function(){
+            };
 
             var deck = function () {
                     var suit,
