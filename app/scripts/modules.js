@@ -14,6 +14,6 @@ angular.module('Tombola.Module.Main', ['ui.router','Tombola.Module.HomePage', 'T
             .state('gameLobby', {
                 url: "/lobby",
                 templateUrl: 'templates/game-lobby.html',
-                controller: 'GameLobby'
+                controller: 'LobbyController'
             });
     });
