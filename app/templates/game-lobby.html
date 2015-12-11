@@ -1,5 +1,7 @@
 <div class="content">
-    <h1> Lets play snap</h1>
+    <h2> Lets play snap</h2>
+    <h2>{{checkWinners.snapMessage}}</h2>
+    <h2>{{checkWinners.loseMessage}}</h2>
     <br>
     <img class="shuffleButton" src="images/shuffle-button.png" ng-click="snapModel.init()">
     <img class="playButton" src="images/play-button.png"  ng-click="snapModel.showCard()">
@@ -7,4 +9,4 @@
 
 <br>
 <div class="content imageContainer {{snapModel.chosenCard.image}}" ng-hide="snapModel.hideMe"> </div>
-<div class="content"> <img class="snapButton" src="../images/snap-button.png"> </div>
+<div class="content"> <input type="image" class="snapButton" src="../images/snap-button.png" ng-disabled="checkWinners.isButtonDisabled" ng-click="checkWinners.checkSnap()"> </div>

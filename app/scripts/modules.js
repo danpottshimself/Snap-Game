@@ -1,6 +1,7 @@
 angular.module('Tombola.Module.HomePage', []);
 angular.module('Tombola.Module.GameLobby', []);
-angular.module('Tombola.Module.Main', ['ui.router','Tombola.Module.HomePage', 'Tombola.Module.GameLobby'])
+angular.module('Tombola.Module.AI', []);
+angular.module('Tombola.Module.Main', ['ui.router','Tombola.Module.HomePage', 'Tombola.Module.GameLobby', 'Tombola.Module.AI'])
     .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/HomePage");
 

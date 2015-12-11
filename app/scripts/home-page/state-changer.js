@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('Tombola.Module.HomePage')
+    angular.module('Tombola.Module.Main')
         .service('StateChanger',
         function ($state) {
             var me = this;
@@ -8,7 +8,7 @@
             me.goToLobby = function (){
                 $state.go('gameLobby');
             };
-            var goToHome = function (){
+             me.goToHome = function (){
                 $state.go('homePage');
             };
         });

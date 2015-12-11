@@ -5,8 +5,8 @@
         function ($state, $timeout, $interval) {
             var me = this,
                 suits = ["Clubs", "Diamonds", "Hearts", "Spades"],
-                cardNumbers = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"],
-                cards = [];
+                cardNumbers = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
+                me.cards = [];
             me.chosenCard = null;
 
 
@@ -15,14 +15,14 @@
                         rank;
                     for (suit in suits) {
                         for (rank in cardNumbers) {
-                            cards.push({
+                            me.cards.push({
                                 suit: suits[suit],
                                 value: cardNumbers[rank],
                                 image: suits[suit] + cardNumbers[rank]
-                                });
+                            });
                         }
                     }
-                    shuffle(cards);
+                    shuffle(me.cards);
                 },
 
                 shuffle = function (cards) {
@@ -52,10 +52,11 @@
             me.showCard = function () {
                 me.hideMe = false;
                 var i = 0;
-                    $interval(function () {
-                    me.chosenCard = cards[i];
+                me.dealCards = $interval(function () {
+                    me.chosenCard = me.cards[i];
+                    me.previousCard = me.cards[i - 1];
                     i++;
-                }, 2000, cards.length);
+                }, 3000, me.cards.length);
             };
 
             me.stateChanger = function () {
