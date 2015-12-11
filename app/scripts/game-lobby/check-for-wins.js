@@ -21,13 +21,14 @@
                     $timeout(function () {
                         me.loseMessage = '';
                         me.isButtonDisabled = false;
-                    }, 5000);
+                    }, 7000);
                 };
 
                 me.checkSnap = function () {
                     console.log(snapModel.chosenCard);
                     if (snapModel.chosenCard.value === snapModel.previousCard.value) {
                         me.snapMessage = 'SNAP! We have a winner!';
+                        snapModel.winner = true;
                         me.clearData();
                     }
                     else {

@@ -6,8 +6,9 @@
             var me = this,
                 suits = ["Clubs", "Diamonds", "Hearts", "Spades"],
                 cardNumbers = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
-                me.cards = [];
+            me.cards = [];
             me.chosenCard = null;
+            me.winner = false;
 
 
             var deck = function () {
@@ -56,6 +57,15 @@
                     me.chosenCard = me.cards[i];
                     me.previousCard = me.cards[i - 1];
                     i++;
+                    console.log(me.chosenCard, me.previousCard);
+                    if (me.chosenCard.value === me.previousCard.value) {
+                        $timeout(function () {
+                            if (me.winner !== true) {
+                                alert('AI WINS');
+                            }
+                        }, 1000);
+                    }
+
                 }, 3000, me.cards.length);
             };
 
