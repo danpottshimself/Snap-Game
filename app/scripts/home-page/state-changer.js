@@ -4,7 +4,8 @@
         .service('StateChanger',
         function ($state) {
             var me = this;
-
+            me.playerScore = [];
+            me.aiScore = [];
             me.goToLobby = function (){
                 $state.go('gameLobby');
             };

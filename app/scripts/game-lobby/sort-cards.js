@@ -1,15 +1,14 @@
 (function () {
     'use strict';
     angular.module('Tombola.Module.GameLobby')
-        .service('SnapModel',
-        function ($state, $timeout, $interval) {
+        .service('SortCards',
+        function ($state) {
             var me = this,
                 suits = ["Clubs", "Diamonds", "Hearts", "Spades"],
                 cardNumbers = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
             me.cards = [];
-            me.chosenCard = null;
             me.winner = false;
-
+            me.winnerName = '';
 
             var deck = function () {
                     var suit,
@@ -48,25 +47,6 @@
 
             me.init = function () {
                 deck();
-            };
-
-            me.showCard = function () {
-                me.hideMe = false;
-                var i = 0;
-                me.dealCards = $interval(function () {
-                    me.chosenCard = me.cards[i];
-                    me.previousCard = me.cards[i - 1];
-                    i++;
-                    console.log(me.chosenCard, me.previousCard);
-                    if (me.chosenCard.value === me.previousCard.value) {
-                        $timeout(function () {
-                            if (me.winner !== true) {
-                                alert('AI WINS');
-                            }
-                        }, 1000);
-                    }
-
-                }, 3000, me.cards.length);
             };
 
             me.stateChanger = function () {

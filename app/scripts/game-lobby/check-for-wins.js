@@ -1,40 +1,21 @@
 (function () {
     'use strict';
     angular.module('Tombola.Module.GameLobby')
-        .service('CheckForWins', ['$timeout', '$interval', 'SnapModel', 'StateChanger',
-            function ($timeout, $interval, snapModel, stateChanger) {
+        .service('CheckForWins', ['$timeout', '$interval', 'SortCards', 'WinConditions', 'DisplayCards','StateChanger',
+            function ($timeout, $interval, sortCards, winConditions, displayCards, stateChanger) {
                 var me = this;
-                me.isButtonDisabled = false;
-                me.clearData = function () {
-                    $interval.cancel(snapModel.dealCards);
-                    snapModel.cards = [];
-                    snapModel.chosenCard = null;
-                    snapModel.previousCard = null;
-                    $timeout(me.winCondition, 5000);
-                };
-                me.winCondition = function () {
-                    stateChanger.goToHome();
-                    me.snapMessage = '';
-                };
-
-                me.loseCondition = function () {
-                    $timeout(function () {
-                        me.loseMessage = '';
-                        me.isButtonDisabled = false;
-                    }, 7000);
-                };
 
                 me.checkSnap = function () {
-                    console.log(snapModel.chosenCard);
-                    if (snapModel.chosenCard.value === snapModel.previousCard.value) {
+                    if (displayCards.chosenCard.value === displayCards.previousCard.value) {
                         me.snapMessage = 'SNAP! We have a winner!';
-                        snapModel.winner = true;
-                        me.clearData();
+                        sortCards.winnerName = 'Human';
+                        sortCards.winner = true;
+                        stateChanger.playerScore.push('|');
+                        winConditions.clearData();
                     }
                     else {
-                        me.loseMessage = 'YOU THOUGHT WRONG! You cant call snap now for 5 seconds.';
-                        me.isButtonDisabled = true;
-                        me.loseCondition();
+                        winConditions.isButtonDisabled = true;
+                        winConditions.loseCondition();
                     }
                 };
             }]);

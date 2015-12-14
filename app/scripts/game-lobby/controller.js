@@ -1,9 +1,11 @@
 (function () {
     'use strict';
     angular.module('Tombola.Module.GameLobby')
-        .controller('LobbyController', ['$scope','SnapModel','CheckForWins',
-            function ($scope, snapModel, checkForWins) {
-                $scope.snapModel = snapModel;
-                $scope.checkWinners = checkForWins;
+        .controller('LobbyController', ['$scope', 'SortCards', 'WinConditions', 'DisplayCards', 'CheckForWins',
+            function ($scope, sortCards, winConditions, displayCards, checkForWins) {
+                $scope.sortCards = sortCards;
+                $scope.winConditions = winConditions;
+                $scope.displayCards = displayCards;
+                $scope.checkForWins = checkForWins;
             }]);
 })();
