@@ -30,7 +30,7 @@
                                 }
                             }, 1000);
                         }
-                    }, 3000, sortCards.cards.length);
+                    }, 4000, sortCards.cards.length);
                     me.aiMessage = '';
                 };
             }]);
