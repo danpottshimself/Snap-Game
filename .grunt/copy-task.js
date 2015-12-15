@@ -15,7 +15,7 @@
                 },
                 html: {
                     cwd: '',
-                    src: ['app/html/*.*', 'app/partials/*.html', 'app/*.html'],
+                    src: ['app/templates/*.*', 'app/*.html'],
                     dest: '.build/',
                     expand: true
                 },
@@ -27,7 +27,7 @@
                 },
                 animation: {
                     cwd: '',
-                    src: ['app/animation/animate.css'],
+                    src: ['app/animation/animation.css'],
                     dest: '.build/app/css/animate.css',
                     expand:false
                 }

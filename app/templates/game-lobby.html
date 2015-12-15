@@ -1,0 +1,14 @@
+<div class="content">
+    <a ui-sref="homePage" href="#">Home</a>
+    <h2> Lets play snap</h2>
+    <h2>{{checkForWins.snapMessage}}</h2>
+    <h2>{{winConditions.loseMessage}}</h2>
+    <h2>{{displayCards.aiMessage}}</h2>
+    <br>
+    <img class="shuffleButton" src="images/shuffle-button.png" ng-click="sortCards.init()">
+    <img class="playButton" src="images/play-button.png"  ng-click="displayCards.showCard()">
+</div>
+
+<br>
+<div class="content imageContainer animated flipOutY infinite {{displayCards.chosenCard.image}}" ng-hide="sortCards.hideMe"> </div>
+<div class="content"> <input type="image" class="snapButton" src="../images/snap-button.png" ng-disabled="winConditions.isButtonDisabled" ng-click="checkForWins.checkSnap()"> </div>
